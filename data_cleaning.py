@@ -47,6 +47,8 @@ missing_summary= df1.isna().sum()
 #missing_summary.plot(kind='bar')
 df1 = df1.dropna()
 
+
+
 #df1['do_concentration'].hist() #normal distribution
 #df1['chl-a_concentration'].hist()
 #df1['temperature'].hist() #normal distribution
@@ -60,8 +62,26 @@ df1 = df1.dropna()
 #sns.boxplot(x=df1['do_concentration'])
 
 #calculating z-score and removing outliers
+#https://towardsdatascience.com/ways-to-detect-and-remove-the-outliers-404d16608dba
 abs_z_scores = np.abs(stats.zscore(df1))
 filtered_entries= (abs_z_scores<3).all(axis=1)
 new_df = df1[filtered_entries]
 new_df.to_csv("cleaned_lake_dataset.csv")
 #print(np.where(z>4))
+
+#pairplot
+#pplot = sns.pairplot(new_df)
+#pplot.fig.suptitle("Pair Plot of Five Water Quality Parameters", y = 1.06, fontsize=25)
+
+#time series subplots
+values = new_df.values
+groups = [0,1,2,3,4]
+i = 1
+
+plt.figure()
+for group  in groups:
+    plt.subplot(len(groups), 1, i)
+    plt.plot(values[:,group])
+    plt.title(new_df.columns[group], x=0.01, y=0.65, loc='left', fontsize = 10)
+    i += 1
+plt.show()

@@ -44,8 +44,10 @@ df1 = df1.set_index('datetime').sort_index()
 
 #Missing value info
 missing_summary= df1.isna().sum()
-#missing_summary.plot(kind='bar')
-df1 = df1.dropna()
+missing_summary.plot(kind='bar')
+plt.title('Missing values for the five parameters')
+plt.show()
+df2 = df1.dropna()
 
 
 
@@ -63,10 +65,10 @@ df1 = df1.dropna()
 
 #calculating z-score and removing outliers
 #https://towardsdatascience.com/ways-to-detect-and-remove-the-outliers-404d16608dba
-abs_z_scores = np.abs(stats.zscore(df1))
+abs_z_scores = np.abs(stats.zscore(df2))
 filtered_entries= (abs_z_scores<3).all(axis=1)
-new_df = df1[filtered_entries]
-new_df.to_csv("cleaned_lake_dataset.csv")
+new_df = df2[filtered_entries]
+# new_df.to_csv("cleaned_lake_dataset.csv")
 #print(np.where(z>4))
 
 #pairplot
@@ -74,14 +76,14 @@ new_df.to_csv("cleaned_lake_dataset.csv")
 #pplot.fig.suptitle("Pair Plot of Five Water Quality Parameters", y = 1.06, fontsize=25)
 
 #time series subplots
-values = new_df.values
-groups = [0,1,2,3,4]
-i = 1
+# values = new_df.values
+# groups = [0,1,2,3,4]
+# i = 1
 
-plt.figure()
-for group  in groups:
-    plt.subplot(len(groups), 1, i)
-    plt.plot(values[:,group])
-    plt.title(new_df.columns[group], x=0.01, y=0.65, loc='left', fontsize = 10)
-    i += 1
-plt.show()
+# plt.figure()
+# for group  in groups:
+#     plt.subplot(len(groups), 1, i)
+#     plt.plot(values[:,group])
+#     plt.title(new_df.columns[group], x=0.01, y=0.65, loc='left', fontsize = 10)
+#     i += 1
+# plt.show()

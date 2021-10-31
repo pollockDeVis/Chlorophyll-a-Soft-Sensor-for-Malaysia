@@ -9,7 +9,7 @@ Created on Sat Oct 23 21:39:49 2021
 import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
-import seaborn as sns
+#import seaborn as sns
 from scipy import stats
 import numpy as np
 
@@ -37,7 +37,7 @@ df1 = df1.rename(columns={'Date Time' : 'datetime', 'Actual Conductivity (µS/cm
 
 #dropping non-useful columns 
 
-df1 = df1.drop(columns= ['specific_conductivity', 'total_dissolved_solids', 'do_saturation', 'oxygen_partial_pressure', 'chl-a_fluorescence'])
+df1 = df1.drop(columns= ['specific_conductivity', 'do_saturation', 'oxygen_partial_pressure', 'chl-a_fluorescence'])
 
 #setting datetime as the index and sorting the dataframe
 df1 = df1.set_index('datetime').sort_index()
@@ -68,7 +68,7 @@ df2 = df1.dropna()
 abs_z_scores = np.abs(stats.zscore(df2))
 filtered_entries= (abs_z_scores<3).all(axis=1)
 new_df = df2[filtered_entries]
-# new_df.to_csv("cleaned_lake_dataset.csv")
+new_df.to_csv("cleaned_lake_dataset_with_tds.csv")
 #print(np.where(z>4))
 
 #pairplot

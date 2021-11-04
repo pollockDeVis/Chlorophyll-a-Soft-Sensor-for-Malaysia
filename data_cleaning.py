@@ -44,10 +44,11 @@ df1 = df1.set_index('datetime').sort_index()
 
 #Missing value info
 missing_summary= df1.isna().sum()
-missing_summary.plot(kind='bar')
-plt.title('Missing values for the five parameters')
-plt.show()
-df2 = df1.dropna()
+#commenting for now
+# missing_summary.plot(kind='bar')
+# plt.title('Missing values for the five parameters')
+# plt.show()
+#df2 = df1.dropna() #commenting for now
 
 
 
@@ -65,10 +66,13 @@ df2 = df1.dropna()
 
 #calculating z-score and removing outliers
 #https://towardsdatascience.com/ways-to-detect-and-remove-the-outliers-404d16608dba
-abs_z_scores = np.abs(stats.zscore(df2))
-filtered_entries= (abs_z_scores<3).all(axis=1)
-new_df = df2[filtered_entries]
-new_df.to_csv("cleaned_lake_dataset_with_tds.csv")
+
+#Commenting out for now
+# abs_z_scores = np.abs(stats.zscore(df2))
+# filtered_entries= (abs_z_scores<3).all(axis=1)
+# new_df = df2[filtered_entries]
+new_df = df1['2019-02-20' : '2019-04-05'] #trimming from feb to apr
+new_df.to_csv("raw_lake_dataset_feb-apr.csv")
 #print(np.where(z>4))
 
 #pairplot

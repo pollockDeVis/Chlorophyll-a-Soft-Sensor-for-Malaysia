@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "3e2f2313-5b39-4ac4-b3e3-6f48effb64ae",
+		"name": "wq-inference",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://20.44.192.21:80/api/v1/service/wq-webservice/score",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"datetime\": \"2019-03-19T10:13:33.000Z\",\r\n            \"temp\": 31.12066,\r\n            \"cond\": 94.45308,\r\n            \"do\": 12.06529,\r\n            \"turb\": 184.8468\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://20.44.192.21:80/api/v1/service/wq-webservice/score",
+					"protocol": "http",
+					"host": [
+						"20",
+						"44",
+						"192",
+						"21"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"v1",
+						"service",
+						"wq-webservice",
+						"score"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,20 @@
+HTTP Post Request
+
+
+
+EVENT TIME
+Prepare 11.34 ms
+Socket Initialization 0.34 ms
+
+Transfer Start 148.68 ms
+Download 2.13 ms
+Process 0.07 ms
+Total 162.55 ms
+
+
+Response Size 343 B
+Body 35 B
+Headers 308 B
+Request Size 537 B
+Body 222 B
+Headers 315 B

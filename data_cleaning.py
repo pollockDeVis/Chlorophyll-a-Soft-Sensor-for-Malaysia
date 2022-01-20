@@ -62,7 +62,7 @@ missing_summary= df1.isna().sum()
 #Outlier detection
 #turbidity (low and high outliers) #actual conductivity low outlier
 #temp, do_conc & chl-a_conc no oulier
-#sns.boxplot(x=df1['do_concentration'])
+sns.boxplot(x=df1['do_concentration'])
 
 #calculating z-score and removing outliers
 #https://towardsdatascience.com/ways-to-detect-and-remove-the-outliers-404d16608dba
@@ -71,8 +71,11 @@ missing_summary= df1.isna().sum()
 # abs_z_scores = np.abs(stats.zscore(df2))
 # filtered_entries= (abs_z_scores<3).all(axis=1)
 # new_df = df2[filtered_entries]
-new_df = df1['2019-02-20' : '2019-04-05'] #trimming from feb to apr
-new_df.to_csv("raw_lake_dataset_feb-apr.csv")
+
+#commenting out 12-jan-2022
+# new_df = df1['2019-02-20' : '2019-04-05'] #trimming from feb to apr
+# new_df.to_csv("raw_lake_dataset_feb-apr.csv")
+
 #print(np.where(z>4))
 
 #pairplot
